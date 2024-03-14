@@ -19,7 +19,7 @@ fclean:
 	make clean
 	echo "\n\n\n\tRemoving persistant storage\n"
 	docker system prune --all
-	rm -rf $(VOLUME_ROOT)
+	sudo rm -rf $(VOLUME_ROOT)
 
 re:
 	make fclean
