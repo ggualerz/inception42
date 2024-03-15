@@ -1,15 +1,16 @@
-MAINTAINER ggualerz@student.42nice.fr
 FROM    alpine:3.19.1
+MAINTAINER ggualerz@student.42nice.fr
+
 RUN     apk update && apk upgrade && apk add --no-cache nginx gettext
 
 
 
 WORKDIR /var/www/html
-COPY    ./conf/start.sh /start.sh
-RUN     chmod +x /start.sh
-COPY    ./conf/default.template /etc/nginx/http.d/default.template
+COPY    ./conf/default.conf /etc/nginx/http.d/default.conf
+COPY	./conf/srv.key /etc/nginx/ssl/srv.key
+COPY	./conf/srv.crt /etc/nginx/ssl/srv.crt
 
 EXPOSE  443
+# ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
-# CMD     ["sh", "/start.sh"]
-CMD ["sh", "nginx -g 'daemon off;'"]

@@ -1,15 +1,15 @@
-version: '3.8'
+version: '3'
 
 services:
   nginx:
-    build:
-      context: ./requirements/nginx
-      dockerfile: Dockerfile
+    build: ./requirements/nginx
+    container_name: nginx
     ports:
       - "443:443"
+    env_file:
+      - .env
     volumes:
-      - ${VOLUME_ROOT}/nginx:/etc/nginx/ssl
-      # - ${VOLUME_ROOT}/wordpress:/var/www/html
+      - ${VOLUME_ROOT}/wordpress:/var/www/html
     depends_on:
       - wordpress
     networks:
@@ -17,14 +17,15 @@ services:
     restart: unless-stopped
 
   wordpress:
-    build:
-      context: ./requirements/wordpress
-      dockerfile: Dockerfile
+    build: ./requirements/wordpress
+    container_name: wordpress
     environment:
       WORDPRESS_DB_HOST: mariadb
       WORDPRESS_DB_USER: ${SQL_USR}
       WORDPRESS_DB_PASSWORD: ${SQL_PASSW}
       WORDPRESS_DB_NAME: wordpress
+    env_file:
+      - .env
     volumes:
       - ${VOLUME_ROOT}/wordpress:/var/www/html
     depends_on:
@@ -34,14 +35,15 @@ services:
     restart: unless-stopped
 
   mariadb:
-    build:
-      context: ./requirements/mariadb
-      dockerfile: Dockerfile
+    build: ./requirements/mariadb
+    container_name: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: ${SQL_ROOT_PASSW}
       MYSQL_DATABASE: wordpress
       MYSQL_USER: ${SQL_USR}
       MYSQL_PASSWORD: ${SQL_PASSW}
+    env_file:
+      - .env
     volumes:
       - ${VOLUME_ROOT}/mariadb:/var/lib/mysql
     networks:
