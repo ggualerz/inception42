@@ -9,16 +9,16 @@ all:
 	echo "\n\n\n\tDocker compose build and up\n"
 	mkdir -p $(VOLUME_ROOT)
 	chmod 777 $(VOLUME_ROOT)
-	cd srcs && docker compose build && docker compose up -d
+	cd srcs && sudo docker compose build && sudo docker compose up -d
 
 clean:
 	echo "\n\n\n\tDocker compose down, it will not clean persistent data\n"
-	cd srcs && docker-compose down
+	cd srcs && sudo docker-compose down
 
 fclean:
 	make clean
 	echo "\n\n\n\tRemoving persistant storage\n"
-	docker system prune --all
+	sudo docker system prune --all
 	sudo rm -rf $(VOLUME_ROOT)
 
 re:

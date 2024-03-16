@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma page incroyable</title>
+    <style>
+        #shiba-image {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>A simple static website in the language of your choice except PHP (Yes, PHP is excluded!).</h1> 
+	<h2>This website contain a JS function its basically a fully JS website</h2>
+    <button onclick="afficherImage()">Wow</button>
+    <br><br>
+    <img id="shiba-image" src="https://apiprovence.tech/shiba.php" alt="Image de Shiba">
+    
+    <script>
+        function afficherImage() {
+            var image = document.getElementById("shiba-image");
+            image.style.display = "block";
+        }
+    </script>
+</body>
+</html>
