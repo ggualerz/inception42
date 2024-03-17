@@ -5,6 +5,7 @@ services:
   nginx:
     build: ./requirements/nginx
     container_name: nginx
+    image: nginx
     ports:
       - "443:443"
     env_file:
@@ -20,6 +21,7 @@ services:
   wordpress:
     build: ./requirements/wordpress
     container_name: wordpress
+    image: wordpress
     env_file:
       - .env
     volumes:
@@ -33,6 +35,7 @@ services:
   mariadb:
     build: ./requirements/mariadb
     container_name: mariadb
+    image: mariadb
     env_file:
       - .env
     volumes:
@@ -44,6 +47,7 @@ services:
   adminer:
     build: ./requirements/bonus/adminer
     container_name: adminer
+    image: adminer
     networks:
       - docker-network
     restart: unless-stopped
@@ -52,6 +56,7 @@ services:
   website:
     build: ./requirements/bonus/website
     container_name: website
+    image: website
     networks:
       - docker-network
     restart: unless-stopped
@@ -60,6 +65,7 @@ services:
   cadvisor:
     build: ./requirements/bonus/cadvisor
     container_name: cadvisor
+    image: cadvisor
     networks:
       - docker-network
     restart: unless-stopped
@@ -73,6 +79,7 @@ services:
   redis:
     build: ./requirements/bonus/redis
     container_name: redis
+    image: redis
     volumes:
       - ${VOLUME_ROOT}/wordpress:/var/www/html
     depends_on:

@@ -3,7 +3,6 @@ export
 
 all:
 	echo "\tAdd FDQN in hostfile\n"
-	sudo chmod 666 /etc/hosts
 	sudo echo "127.0.0.1 $(FDQN)" >> /etc/hosts
 	sudo echo "127.0.0.1 www.$(FDQN)" >> /etc/hosts
 	echo "\n\n\n\tDocker compose build and up\n"
