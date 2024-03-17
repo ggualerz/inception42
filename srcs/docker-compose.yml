@@ -65,6 +65,21 @@ services:
     restart: unless-stopped
     ports:
       - "8082:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro 
+      - /sys:/sys:ro 
+      - /var/lib/docker/:/var/lib/docker:ro
+  redis:
+    build: ./requirements/bonus/redis
+    container_name: redis
+    volumes:
+      - ${VOLUME_ROOT}/wordpress:/var/www/html
+    depends_on:
+      - wordpress
+    networks:
+      - docker-network
+    restart: unless-stopped
 networks:
   docker-network:
     driver: bridge

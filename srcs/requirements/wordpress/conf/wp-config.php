@@ -3,7 +3,7 @@
 define( 'DB_NAME', "wordpress" );
 define( 'DB_USER', getenv( 'SQL_USR' ) );
 define( 'DB_PASSWORD', getenv( 'SQL_PASSW' ) );
-define( 'DB_HOST', "mariadb" . ':' . "3306"); 
+define( 'DB_HOST', "mariadb:3306"); 
 define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', 'utf8_bin' );
 
@@ -20,9 +20,14 @@ define('SECURE_AUTH_SALT', '+B4x{Q<qBrZK~Lhr<x-PF$8+kgkGU?9e^PT;#9Vpx;Wn(jr}Z^MJ
 define('LOGGED_IN_SALT',   'eC@CD@:/-zY@qcCr-e|,1!h+WHF{jY>|`t|N+<PQ/9n{c7ff=Ft<|&}!eal5)I;]');
 define('NONCE_SALT',       'NC2!`44TH+>XN7.5yWt!i|mKbajA=OdHSRRG+NY+g4]qUW]x-fZOEywZu2mf`?yO');
 
+//IF REDIS IS UP
+define( 'WP_REDIS_HOST', 'redis' );
+define( 'WP_REDIS_PORT', 6379 ); 
+define('WP_CACHE', true);
+
 $table_prefix = 'wp_';
 
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', true );
 
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );

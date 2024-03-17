@@ -16,6 +16,11 @@ if [ ! -f "$lock_file" ]; then
     wp core install --allow-root --url="${FDQN}" --title="Biopic de Rachid Abarki" --admin_user="${WP_ADMIN_USR}" --admin_password="${WP_ADMIN_PASSW}" --admin_email="${WP_ADMIN_EMAIL}" --path="/var/www/html" --skip-email && \
     wp user create "${WP_NORMAL_USR}" "${WP_NORMAL_EMAIL}" --allow-root --role="author" --user_pass="${WP_NORMAL_PASSW}" --path="/var/www/html"
     
+	#If redis is there
+	wp plugin install redis-cache --activate --allow-root --path="/var/www/html"
+	wp plugin update --all --allow-root --path="/var/www/html"
+	wp redis enable --allow-root --path="/var/www/html"
+
     # Create the lock file
     touch "$lock_file"
 fi
