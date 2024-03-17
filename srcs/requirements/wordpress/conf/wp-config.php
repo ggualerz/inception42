@@ -24,6 +24,7 @@ define('NONCE_SALT',       'NC2!`44TH+>XN7.5yWt!i|mKbajA=OdHSRRG+NY+g4]qUW]x-fZO
 define( 'WP_REDIS_HOST', 'redis' );
 define( 'WP_REDIS_PORT', 6379 ); 
 define('WP_CACHE', true);
+define('WP_REDIS_CLIENT', 'phpredis');
 
 $table_prefix = 'wp_';
 

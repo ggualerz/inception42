@@ -22,11 +22,6 @@ RUN		mkdir /var/www
 RUN		mkdir /var/www/html
 RUN 	chmod 777 /var/www/html
 
-# Downloading and changing permissions of WP CLI tool
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
-    chmod +x wp-cli.phar && \
-    mv -f wp-cli.phar /usr/local/bin/wp
-
 # Using wp cli tool
 
 ENTRYPOINT	["sh", "start.sh"]
