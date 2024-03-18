@@ -12,7 +12,7 @@ all:
 
 clean:
 	echo "\n\n\n\tDocker compose down, it will not clean persistent data\n"
-	cd srcs && sudo docker-compose down
+	cd srcs && sudo docker compose down
 
 fclean:
 	make clean
