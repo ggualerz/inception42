@@ -87,6 +87,20 @@ services:
     networks:
       - docker-network
     restart: unless-stopped
+  ftp:
+    build: ./requirements/bonus/ftp
+    container_name: ftp
+    image: ftp
+    volumes:
+      - ${VOLUME_ROOT}/wordpress:/ftp
+    depends_on:
+      - wordpress
+    networks:
+      - docker-network
+    restart: unless-stopped
+    ports:
+      - "21:21"
+      - "21100-21110:21100-21110"
 networks:
   docker-network:
     driver: bridge

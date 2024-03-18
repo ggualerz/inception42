@@ -21,6 +21,8 @@ if [ ! -f "$lock_file" ]; then
 	wp plugin update --all --allow-root --path="/var/www/html"
 	wp redis enable --allow-root --path="/var/www/html"
 
+	# chmod 777 for ftp acess BONUS
+	chmod -R +r /var/www/html
     # Create the lock file
     touch "$lock_file"
 fi

@@ -22,8 +22,7 @@ RUN		mkdir /var/www
 RUN		mkdir /var/www/html
 RUN 	chmod 777 /var/www/html
 
-# Using wp cli tool
-
+EXPOSE 9000
 ENTRYPOINT	["sh", "start.sh"]
 # ENTRYPOINT ["tail", "-f", "/dev/null"]
-EXPOSE 9000
+
